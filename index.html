@@ -51,10 +51,49 @@
   margin: 0 auto;
   opacity: 0.9;
     }
+ /* ТУМАН */
+.fog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.06), transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(255,255,255,0.04), transparent 45%);
+  animation: fogMove 40s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes fogMove {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-200px, -150px); }
+}
+
+/* ШУМ / ЗЕРНО */
+.noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* КОНТЕНТ ПОВЕРХ ЭФФЕКТОВ */
+header, section, footer {
+  position: relative;
+  z-index: 3;
+}
   </style>
 </head>
 <body>
-
+<div class="fog"></div>
+<div class="noise"></div>
 <header>
   <h1>ECHO ZONE</h1>
   <p>
